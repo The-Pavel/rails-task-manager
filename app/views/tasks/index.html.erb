@@ -1,13 +1,21 @@
 <div class="container" style="width: 60vw; margin: 0 auto; text-align: center;">
-  <%= link_to "Start New Task", tasks_new_path %>
-  <h1>Your tasks for today</h1>
+  <h3 class="start-task"><%= link_to "Start New Task", tasks_new_path %></h3>
+  <h1 class="main-headline">Your tasks for today</h1>
   <% @tasks.reverse_each do |task| %>
-    <h2><%= link_to task.title, show_path(task.id) %></h2>
-    <h4><%= task.details %></h4>
-    <p>Completed? <strong><%= task.completed.to_s %></strong></p>
-    <p>Last updated at: <strong><%= task.updated_at %></strong></p>
-    <%= link_to "Edit", task_path(task.id) %>
-    <%= link_to "Delete", destroy_path(task.id), method: :delete,
-      data: { confirm: "Are you sure?" } %>
+  <%= link_to show_path(task.id) do %>
+    <div class="box">
+      <h2><%= task.title %></h2>
+      <h4><%= task.details %></h4>
+      <p>Status: <strong><%= task.completed ? "DONE!" : "NOT DONE!" %></strong></p>
+      <p>Last updated at: <strong><%= task.updated_at %></strong></p>
+      <%= link_to task_path(task.id) do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
+      <%= link_to destroy_path(task.id), method: :delete,
+        data: { confirm: "Are you sure?" } do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
+    </div>
+  <% end %>
   <% end %>
 </div>

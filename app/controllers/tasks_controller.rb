@@ -10,6 +10,11 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    if @task.completed
+      @status = "DONE!"
+    else
+      @status = "NOT DONE!"
+    end
   end
 
   def create

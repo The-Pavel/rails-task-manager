@@ -1,5 +1,16 @@
-<h1><%= @task.title %></h1>
-<h3>Details:</h3>
-<p><%= @task.details %></p><br><p>Completed: <%= @task.completed.to_s %></p>
+<div class="single">
+  <h1><%= @task.title %></h1>
+  <h4>Details:</h4>
+  <p><%= @task.details %></p><br><p>Status: <strong><%= @status %></strong></p>
 
-<%= link_to "Back", root_path %>
+  <%= link_to task_path(@task.id) do %>
+    <i class="fas fa-edit"></i>
+  <% end %>
+  <%= link_to destroy_path(@task.id), method: :delete,
+    data: { confirm: "Are you sure?" } do %>
+    <i class="fas fa-trash"></i>
+  <% end %>
+  <br>
+
+  <%= link_to "Back", root_path %>
+</div>
