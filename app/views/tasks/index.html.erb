@@ -1,0 +1,13 @@
+<div class="container" style="width: 60vw; margin: 0 auto; text-align: center;">
+  <%= link_to "Start New Task", tasks_new_path %>
+  <h1>Your tasks for today</h1>
+  <% @tasks.reverse_each do |task| %>
+    <h2><%= link_to task.title, show_path(task.id) %></h2>
+    <h4><%= task.details %></h4>
+    <p>Completed? <strong><%= task.completed.to_s %></strong></p>
+    <p>Last updated at: <strong><%= task.updated_at %></strong></p>
+    <%= link_to "Edit", task_path(task.id) %>
+    <%= link_to "Delete", destroy_path(task.id), method: :delete,
+      data: { confirm: "Are you sure?" } %>
+  <% end %>
+</div>

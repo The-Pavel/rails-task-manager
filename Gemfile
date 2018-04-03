@@ -29,7 +29,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+# faker is for populating random text
+  gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
